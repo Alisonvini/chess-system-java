@@ -41,10 +41,15 @@ public class Program {
 				if (capturedPiece != null) {
 					captured.add(capturedPiece);
 				}
-				
+
 				if (chessMatch.getPromoted() != null) {
 					System.out.print("Enter piece for pomotion (B/N/R/Q): ");
-					String type = sc.nextLine();
+					String type = sc.nextLine().toUpperCase();
+					while (!type.equals("B") && !type.equals("N") && !type.equals("R") & !type.equals("Q")) {
+						System.out.print("Enter piece for pomotion (B/N/R/Q): ");
+						type = sc.nextLine().toUpperCase();
+
+					}
 					chessMatch.replacePromotedPiece(type);
 				}
 
@@ -57,7 +62,7 @@ public class Program {
 			}
 
 		}
-		
+
 		UI.clearScreen();
 		UI.printMatch(chessMatch, captured);
 	}
